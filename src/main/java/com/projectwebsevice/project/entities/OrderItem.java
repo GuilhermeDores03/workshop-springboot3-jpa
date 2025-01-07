@@ -18,21 +18,21 @@ public class OrderItem implements Serializable {
 	@EmbeddedId
 	private OrderItemPk id = new OrderItemPk();
 	
-	private Integer quatity;
+	private Integer quantity;
 	private Double price;
 
 	//constructors
 	public OrderItem() {
 	}
 
-	public OrderItem(Order order, Product product, Integer quatity, Double price) {
+	public OrderItem(Order order, Product product, Integer quantity, Double price) {
 		id.setOrder(order);
 		id.setProduct(product);
-		this.quatity = quatity;
+		this.quantity = quantity;
 		this.price = price;
 	}
 
-	//methods
+	//methods	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -51,12 +51,16 @@ public class OrderItem implements Serializable {
 	}
 	
 	//getters setters
-	public Integer getQuatity() {
-		return quatity;
+	public Double getSubTotal() {
+		return price * quantity;
+	}
+	
+	public Integer getquantity() {
+		return quantity;
 	}
 
-	public void setQuatity(Integer quatity) {
-		this.quatity = quatity;
+	public void setquantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 
 	public Double getPrice() {
